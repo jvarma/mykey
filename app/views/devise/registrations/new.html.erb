@@ -1,0 +1,32 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= devise_error_messages! %>
+
+	<div>
+		<%= f.label :name, "your full name" %><br />
+  		<%= f.text_field :name, placeholder: "maximum 30 characters" %>
+  	</div>
+
+  	<div>
+  		<%= f.label :email, "email id" %><br />
+  		<%= f.email_field :email, placeholder: "@" %>
+  	</div>
+
+  	<div>
+  		<%= f.label :password, "enter a password" %><br />
+  		<%= f.password_field :password, placeholder: "6 to 15 characters" %>
+  	</div>
+
+  	<div>
+  		<%= f.label :password_confirmation, "re-enter password" %><br />
+  		<%= f.password_field :password_confirmation, placeholder: "same as above" %>
+  	</div>
+
+  	<div>
+  		<%= f.submit "sign up" %>
+  	</div>
+
+<% end %>
+
+<%= render "links" %>
