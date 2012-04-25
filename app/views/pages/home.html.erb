@@ -1,11 +1,29 @@
 <div class="center hero-unit">
-  <h1>your key - your stuff</h1>
+	<h1>
+		your key - your stuff
+	</h1>
 
-  <h2>
-    work is in progress!
-  </h2>
+  	<h2>
+    	work is in progress!
+  	</h2>
 
-  <%= link_to "sign up", new_user_registration_path, class: "btn btn-large btn-primary" %><%= " or " %> 
-  <%= link_to "sign in", new_user_session_path, class: "btn btn-large btn-primary" %>
+  	<% if user_signed_in? %>
+  		<div class="container">
+  		<% @users.each do |user| %>
+  			<div class="row">
+  				<div class="span2">
+  				</div>
+  				<div class="span8">
+  					<h2 class="pull-left"><%= link_to user.name, '#' %></h2>
+  				</div>
+  			</div>
+
+  		<% end %>
+  		</div>
+
+  	<% else %>
+  		<%= link_to "sign up", new_user_registration_path, class: "btn btn-large btn-primary" %><%= " or " %> 
+  		<%= link_to "sign in", new_user_session_path, class: "btn btn-large btn-primary" %>
+  	<% end %>
 </div>
 
