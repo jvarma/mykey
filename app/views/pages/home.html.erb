@@ -14,7 +14,12 @@
   				<div class="span2">
   				</div>
   				<div class="span8">
-  					<h2 class="pull-left"><%= link_to user.name, '#' %></h2>
+  					<div class="row">
+  						<h2 class="pull-left"><%= link_to user.name, '#' %></h2>
+  					</div>
+  					<div class="row pull-left">
+  						<small>Last signed in at: <%= user.last_sign_in_at %></small>
+  					</div>
   				</div>
   			</div>
 
