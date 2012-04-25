@@ -39,4 +39,4 @@ production:
   pool: 5
   username: root
   password:
-  host: localhost
+  host: http://mykey.herokuapp.com
