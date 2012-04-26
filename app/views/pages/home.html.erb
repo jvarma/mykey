@@ -1,11 +1,3 @@
-<div class="center hero-unit">
-	<h1>
-		your key - your stuff
-	</h1>
-
-  	<h2>
-    	work is in progress!
-  	</h2>
 
   	<% if user_signed_in? %>
   		<div class="container">
@@ -27,14 +19,30 @@
   		</div>
 
   	<% else %>
-  		<%= link_to "sign up", new_user_registration_path, class: "btn btn-large btn-primary" %><%= " or " %> 
-  		<%= link_to "sign in", new_user_session_path, class: "btn btn-large btn-primary" %>
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span3">
+            <%= image_tag("static_image_1.jpg")%>
+          </div>
+          <div class="span3">
+            <%= image_tag("static_image_2.jpg")%>
+          </div>
+          <div class="span3">
+            <%= image_tag("static_image_3.jpg")%>
+          </div>
+          <div class="span3">
+            <%= image_tag("static_image_4.jpg")%>
+          </div>
+        </div>
+      </div>
+  		
   	<% end %>
-</div>
 
-<% unless user_signed_in? %>  
-   <h1>Welcome to ShareBox</h1>  
-   <p>File sharing web application you can't ignore.</p>  
+<% unless user_signed_in? %>
+  <div class="center hero-unit">      
+    <p>ALL YOUR DATA. MADE SIMPLE. IN YOUR CONTROL</p>  
+  </div>
+   
      
 <% else %>  
   

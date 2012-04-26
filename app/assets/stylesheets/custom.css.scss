@@ -170,4 +170,14 @@ footer {
     text-decoration:none;  
     color:#1D96EF;  
     font-size:12px;  
+}
+
+/* overriding .hero-unit */
+.hero-unit {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
 }  
