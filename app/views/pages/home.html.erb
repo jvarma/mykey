@@ -1,5 +1,6 @@
 
   	<% if user_signed_in? %>
+<<<<<<< HEAD
         <div class="container-fluid">
         <div class="row-fluid">
           <div class="span2">
@@ -12,6 +13,24 @@
           </div><!--/span-->
         </div><!--/row-->
       </div><!--/.fluid-container-->
+=======
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#1" data-toggle="tab">home</a></li>
+          <li><a href="#3" data-toggle="tab">upload</a></li>
+          <li><a href="#4" data-toggle="tab">files</a></li>
+          <li><a href="#5" data-toggle="tab">folders</a></li>
+          <li><a href="#6" data-toggle="tab">sharing</a></li>
+          <li><a href="#7" data-toggle="tab">key</a></li>
+          <li><a href="#2" data-toggle="tab">surprise me!</a></li>
+        </ul>
+        <div class="tab-content">
+          <%= render 'home_tab_home'%>
+          <%= render 'home_tab_surprise'%>
+        </div>
+      </div>
+
+>>>>>>> home-page
   	<% else %>
       <div class="tabbable">
         <ul class="nav nav-tabs">
@@ -19,17 +38,15 @@
           <li><a href="#2" data-toggle="tab">surprise me!</a></li>
         </ul>
         <div class="tab-content">
-          <%= render 'home_tab_1'%>
-          <%= render 'home_tab_2'%>
+          <%= render 'home_tab_home'%>
+          <%= render 'home_tab_surprise'%>
         </div>
       </div>       
   	<% end %>
 
-<% unless user_signed_in? %>
   <div class="center hero-unit">      
     <h2>all your data | made simple | in your control</h2>  
   </div>
-<% end %>  
 
 
 
