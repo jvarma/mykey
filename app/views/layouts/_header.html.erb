@@ -6,7 +6,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+
       <%= link_to "my key", root_path, class: "brand" %>
+      <form class="navbar-search pull-left">
+  <input type="text" class="search-query" placeholder="Search">
+</form>
       <% if user_signed_in? %>
         <%= render 'layouts/header_user_btn' %>
       <% else %>
