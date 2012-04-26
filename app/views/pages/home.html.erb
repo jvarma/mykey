@@ -1,19 +1,17 @@
 
   	<% if user_signed_in? %>
-  		<div class="container">
-  		<% @users.each do |user| %>
-  			<div class="row">
-  				<div class="span2">
-  				</div>
-  				<div class="span8">
-  					<div class="row">
-  						<h2 class="pull-left"><%= link_to user.name, '#' %></h2>
-  					</div>
-  				</div>
-  			</div>
-  	<% end %>
-  		</div>
-
+        <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="well sidebar-nav-fixed">
+              <%= render 'sidebar' %>
+            </div><!--/.well -->
+          </div><!--/span-->
+          <div class="span10 span-fixed-sidebar">
+            <%= render 'home_main' %>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
   	<% else %>
       <div class="tabbable">
         <ul class="nav nav-tabs">
@@ -33,9 +31,5 @@
   </div>
 <% end %>  
 
-
-
-
-       
 
 
