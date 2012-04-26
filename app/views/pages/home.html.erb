@@ -21,28 +21,8 @@
           <li><a href="#2" data-toggle="tab">surprise me!</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="1">
-            <div class="container">
-              <div class="row-fluid">
-                <div class="span3">
-                  <%= image_tag("static_image_1.jpg")%>
-                </div>
-                <div class="span3">
-                  <%= image_tag("static_image_2.jpg")%>
-                </div>
-                <div class="span3">
-                  <%= image_tag("static_image_3.jpg")%>
-                </div>
-                <div class="span3">
-                  <%= image_tag("static_image_4.jpg")%>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="2">
-            <h2>surprise! surprise! surprise!</h2>
-            <p align="center">...its is on its way!</p>
-          </div>
+          <%= render 'home_tab_1'%>
+          <%= render 'home_tab_2'%>
         </div>
       </div>       
   	<% end %>
