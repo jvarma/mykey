@@ -8,6 +8,14 @@ Mykey::Application.routes.draw do
   root :to => 'pages#home'
 
   match "assets/get/:id" => "assets#get", as: :download
+
+  match "/tou" => "pages#tou", as: :tou
+  match "/about" => "pages#about", as: :about
+  match "/help" => "pages#help", as: :help
+  match "/contact" => "pages#contact", as: :contact
+  
+  
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
