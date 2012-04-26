@@ -9,56 +9,53 @@
   					<div class="row">
   						<h2 class="pull-left"><%= link_to user.name, '#' %></h2>
   					</div>
-  					<div class="row pull-left">
-  						<small>Last signed in at: <%= user.last_sign_in_at %></small>
-  					</div>
   				</div>
   			</div>
-
-  		<% end %>
+  	<% end %>
   		</div>
 
   	<% else %>
-      <div class="container">
-        <div class="row-fluid">
-          <div class="span3">
-            <%= image_tag("static_image_1.jpg")%>
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#1" data-toggle="tab">home</a></li>
+          <li><a href="#2" data-toggle="tab">surprise me!</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <div class="container">
+              <div class="row-fluid">
+                <div class="span3">
+                  <%= image_tag("static_image_1.jpg")%>
+                </div>
+                <div class="span3">
+                  <%= image_tag("static_image_2.jpg")%>
+                </div>
+                <div class="span3">
+                  <%= image_tag("static_image_3.jpg")%>
+                </div>
+                <div class="span3">
+                  <%= image_tag("static_image_4.jpg")%>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="span3">
-            <%= image_tag("static_image_2.jpg")%>
-          </div>
-          <div class="span3">
-            <%= image_tag("static_image_3.jpg")%>
-          </div>
-          <div class="span3">
-            <%= image_tag("static_image_4.jpg")%>
+          <div class="tab-pane" id="2">
+            <h2>surprise! surprise! surprise!</h2>
+            <p align="center">...its is on its way!</p>
           </div>
         </div>
-      </div>
-  		
+      </div>       
   	<% end %>
 
 <% unless user_signed_in? %>
   <div class="center hero-unit">      
     <h2>all your data | made simple | in your control</h2>  
   </div>
-   
-     
-<% else %>  
-  
-   <div class="asset_list_header">  
-       <div class="file_name_header">File Name</div>  
-       <div class="file_size_header">Size</div>  
-       <div class="file_last_updated_header">Modified</div>  
-   </div>  
-   <div class="asset_list">  
-       <% @assets.each do |asset| %>  
-           <div class="asset_details">  
-               <div class="file_name"><%= link_to asset.file_name, download_url(asset) %></div>  
-               <div class="file_size"><%= number_to_human_size(asset.file_size, precision: 2) %></div>  
-               <div class="file_last_updated"><%= asset.uploaded_file_updated_at %></div>  
-           </div>  
-       <% end %>  
-   </div>  
 <% end %>  
+
+
+
+
+       
+
 
