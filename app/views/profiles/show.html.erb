@@ -5,10 +5,14 @@
 		</div>
 		<div class="span10">
 			<div class="row">
-				<h2 class="pull-left"><%= current_user.name %></h2>
+				<h2 class="pull-left"><%= @user.name %></h2>
 			</div>
 			<div class="row">
+			<% if current_user == @user %>
 				<%= best_in_place @profile, :about, type: :textarea, nil: "click here to add a description (max 200 characters)" %>
+			<% else %>
+				<%= @profile.about %>
+			<% end %>
 			</div>
 		</div>
 	</div>
