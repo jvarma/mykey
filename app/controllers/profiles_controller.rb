@@ -1,13 +1,11 @@
 class ProfilesController < ApplicationController
-
-	respond_to :html, :json
+  before_filter :authenticate_user!
+  before_filter :correct_user, only: [:edit, :update]
 	
   def edit
-  	@profile = Profile.find(params[:id])
   end
 
   def update
-  	@profile = Profile.find(params[:id])
   	respond_to do |format|
     if @profile.update_attributes(params[:profile])
       	format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
@@ -30,4 +28,13 @@ class ProfilesController < ApplicationController
       render :edit
   	end
   end
+
+  private
+    def correct_user
+      @profile = Profile.find(params[:id])
+      @user = @profile.user
+      unless user_signed_in? && current_user == @user
+        redirect_to root_path
+      end
+    end
 end

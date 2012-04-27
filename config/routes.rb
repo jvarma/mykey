@@ -1,16 +1,15 @@
 Mykey::Application.routes.draw do
 
 
-
-  resources :assets
-
-  resources :profiles
-
   devise_for :users
 
   resources :users do
     resources :profiles, controller: :profiles
   end
+
+  resources :assets
+
+  resources :profiles
 
   root :to => 'pages#home'
 
