@@ -1,5 +1,12 @@
            profiles_edit GET    /profiles/edit(.:format)                    profiles#edit
          profiles_update GET    /profiles/update(.:format)                  profiles#update
+           profile_index GET    /profile(.:format)                          profile#index
+                         POST   /profile(.:format)                          profile#create
+             new_profile GET    /profile/new(.:format)                      profile#new
+            edit_profile GET    /profile/:id/edit(.:format)                 profile#edit
+                 profile GET    /profile/:id(.:format)                      profile#show
+                         PUT    /profile/:id(.:format)                      profile#update
+                         DELETE /profile/:id(.:format)                      profile#destroy
         new_user_session GET    /users/sign_in(.:format)                    devise/sessions#new
             user_session POST   /users/sign_in(.:format)                    devise/sessions#create
     destroy_user_session DELETE /users/sign_out(.:format)                   devise/sessions#destroy

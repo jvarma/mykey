@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'bootstrap-sass', '2.0.0'
 gem 'paperclip', '~> 3.0'
+gem 'best_in_place'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,6 +16,9 @@ end
 
 group :development do
 	gem 'nifty-generators'
+	gem 'nokogiri', '>= 1.5.0'
+	gem 'rspec-rails', '~> 2.8.0'
+
 end
 
 group :production do

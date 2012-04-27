@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
 
 	has_many :assets
 
+	has_one :profile, autosave: true
+
 
 
 end

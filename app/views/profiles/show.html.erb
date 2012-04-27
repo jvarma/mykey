@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row-fluid">
+		<div class="span2 offset2">
+			<%= image_tag("default_profile_photo.png")%>
+		</div>
+		<div class="span10">
+			<div class="row">
+				<h2 class="pull-left"><%= current_user.name %></h2>
+			</div>
+			<div class="row">
+				<%= best_in_place @profile, :about, type: :textarea, nil: "click here to add a description (max 200 characters)" %>
+			</div>
+		</div>
+	</div>
+</div>

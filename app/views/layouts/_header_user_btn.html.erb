@@ -1,10 +1,12 @@
 <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> <%= current_user.name %>
+              <i class="icon-user"></i> <%= current_user.email %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "my profile", '#'%></li>
+              <li>
+              <%= link_to "my profile", user_profile_path(current_user, current_user_profile)%>
+              </li>
               <li><%= link_to "settings", '#' %></li>
               <li class="divider"></li>
               <li><%= link_to "sign out", destroy_user_session_path, method: :delete%></li>
