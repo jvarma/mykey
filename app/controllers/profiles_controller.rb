@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
   	@user = @profile.user
   	if !@profile
   		@profile = Profile.new
-  		render :edit
+      render :edit
   	end
   end
 end
