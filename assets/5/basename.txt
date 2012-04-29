@@ -1,0 +1,91 @@
+- 601 million subscribers
+
+- VAS revenues of INR 12,000 crores (USD 2.5-3B). P2P SMS and CRBT most significant contributor
+
+- ARPUs are declining globally. In India, about INR 80 - 140 (CDMA versus GSM)
+
+- Per second billing itself is estimated to have contributed to about 15-18% loss in revenues to the operators
+
+- Call rates in India are already one of the lowest in the world
+
+- In the past few years, wireless sub base has incresed by 20% every half year
+
+- Urban, top tier markets near saturation. Most growth is happening in the rural areas.
+
+- While growth happening in the rural segment, the ratio of urban to rural sub base is still heavily skewed in the favor of urban dweller. A large untapped base at the bottom of the pyramid
+
+- GSMA claims that 80% of mobile subscribers globally are on GSM. India has followed the same pattern. 
+
+- Focus towards rural markets has also caused a decline in the ARPUs
+
+- ARPUs are however calculated based on revenue per connection. In the urban areas, there is a trend towards multiple connections per person.
+
+- Profitability would depend on ARPUs as well as cost of new user acquisitions
+
+- Towards the end of 2009, as much as one-fifth of all connections were either the second or third connection
+
+- ARPU decline more evident amongst pre-paid users (95% subs are pre-paid)
+
+- Price (of basic voice telephony) is no longer capable of providing differentiation to the operators.
+
+- Perceived value of MVAS depends on perceived rather than the actual utility to the end user. An example of MVAS with high perceived value is CRBT. Practical value depends on the tangible benefits derived from the service. E.g. Get the cheapest ticket.
+
+- mCommerce currently scores low on both perceived and practical value for the urban as well as the rural users.
+
+- Perceived and practical value matrix for VAS differs from urban to rural mobile users. Mobile apps have a low perceived as well as practical value to the rural users but a high practical value to the urban users.
+
+- What used to be VAS has become a commodity (e.g. P2P SMS)
+
+- To the urban user, entertainment VAS has become a commodity. Differentiation is now coming in the form of apps, LBS, music, mCommerce
+
+------------------------------------------------------------------------
+Frequency of usage	X	Longeivity	=	Maturity
+------------------------------------------------------------------------
+Low				Low			New user
+High				Low			Mature
+Low				High			Mature
+High				High			Mature
+------------------------------------------------------------------------
+
+
+
+- Increasing maturity leads to consumption of increasingly complex VAS services:
+	- Entertainment
+	- Information
+	- mCommerce
+	- Mobile apps
+
+
+
+- As per TRAI, annual revenues for 2009-10 for the wireless industry was about INR one lakh crores.
+------------------------------------------------------------------------
+Revenue components		GSM			CDMA
+------------------------------------------------------------------------
+Rental revenue			17.7%			27.6%
+Revenue from calls		59%			56.1%
+Roaming				8.6%			1.5%
+SMS, VAS and installations	14.6%			14.7%
+------------------------------------------------------------------------
+
+For MVAS, these are one of the lowest proportions in the world
+
+
+- MVAS revenues across modes of access
+
+SMS (P2P):		40%
+Voice/IVR:		25%
+SMS (P2A and A2P):	20%
+WAP/GPRS:		09%
+USSD:			06%
+
+SMS (P2P + P2A + A2P) = 60%
+
+- MVAS revenues across segments
+Entertainment:		57%
+Information:		39%
+mCommerce:		04%
+
+- Individual users contribute to 90% of VAS revenues where as enterprises contribute the remaining 10%
+
+- For content, operator revenues vary from 60-65%, the operator getting more in case of non copy-righted content. Content owners get about 10%. 
+

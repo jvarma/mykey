@@ -4,7 +4,7 @@
 		<% @assets.each do |asset| %>
 			<div class="row">
 				<div class="span2">
-					<%= image_tag("asset_type.jpg") %>
+					<%= image_tag("asset_tn/#{asset_type(asset.file_name)}.jpg") %>
 				</div>
 				<div class="span10">
 					<div class="row">

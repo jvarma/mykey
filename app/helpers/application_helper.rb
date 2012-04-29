@@ -23,5 +23,16 @@ module ApplicationHelper
 			file_name[0..14].downcase + "..." + ext
 		end
 	end
+
+	def asset_type(file_name)
+		ext_array = file_name.split(".")
+		ext = ext_array[ext_array.size - 1].downcase
+		if ext == "doc" || ext == "pdf" || ext == "jpg" || ext == "txt"
+			ext
+		else
+			"default"
+		end
+
+	end
 	
 end
