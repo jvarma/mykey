@@ -15,19 +15,16 @@ class ProfilesController < ApplicationController
       	format.json { respond_with_bip(@profile) }
     end
   end
-
-
-
-  end
-
+  
   def show
-  	@profile = Profile.find(params[:id])
-  	@user = @profile.user
-  	if !@profile
-  		@profile = Profile.new
+    @profile = Profile.find(params[:id])
+    @user = @profile.user
+    if !@profile
+      @profile = Profile.new
       render :edit
-  	end
+    end
   end
+
 
   private
     def correct_user

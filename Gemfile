@@ -18,8 +18,15 @@ group :development do
 	gem 'nifty-generators'
 	gem 'nokogiri', '>= 1.5.0'
 	gem 'rspec-rails', '~> 2.8.0'
-
 end
+
+group :test do
+	gem 'mocha'
+	gem 'rspec-rails', '~> 2.8.0'
+	gem 'factory_girl_rails', '1.4.0'
+	gem 'capybara', '>= 1.1.2'
+end
+
 
 group :production do
 	gem 'pg', '0.12.2'
