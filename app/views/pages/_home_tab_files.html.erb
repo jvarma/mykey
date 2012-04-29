@@ -1,7 +1,27 @@
 <div class="tab-pane" id="4">
 
 	<div class="container">
-		The files tab
+		<% @assets.each do |asset| %>
+			<div class="row">
+				<div class="span1">
+					<%= image_tag("asset_type.png") %>
+				</div>
+				<div class="span9">
+					<h2 class="pull-left">
+						<%= link_to pretty_file_name(asset.file_name), download_url(asset) %>
+					</h2>
+				<div class="span1">
+					<%= number_to_human_size(asset.file_size, precision: 2) %>
+				</div>
+				<div class="span1">
+					<%= link_to "delete", asset_path(asset), method: :delete%>
+				</div>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="container">
+		<%= link_to "upload", new_asset_path, class: "btn btn-small btn-primary" %>
 	</div>
 
 	
