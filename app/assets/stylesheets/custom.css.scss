@@ -190,4 +190,36 @@ footer {
 
 .row-fluid > .span-fixed-sidebar {
     margin-left: 290px;
+}
+
+.folder  {  
+    background:url("/asset_tn/folder.png") no-repeat scroll left center transparent;  
 }  
+  
+.file {  
+    background:url("/asset_tn/file.png") no-repeat scroll left center transparent;  
+}  
+.folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover  {  
+    border:1px solid #DFDFDF;  
+}  
+.folder.asset_details:hover  {  
+    background:url("/asset_tn/folder.png") no-repeat scroll left center #EFEFEF;  
+}  
+.shared_folder  {  
+    background:url("/asset_tn/shared_folder.png") no-repeat scroll left center transparent;  
+}  
+.shared_folder.asset_details:hover  {  
+    background:url("/asset_tn/shared_folder.png") no-repeat scroll left center #EFEFEF;  
+}  
+.file.asset_details:hover  {  
+    background:url("/asset_tn/file.png") no-repeat scroll left center #EFEFEF;  
+}
+
+.breadcrumbs {  
+   margin:10px 0;  
+   font-weight:bold;  
+}  
+.breadcrumbs a {  
+   color:#1D96EF;  
+   text-decoration:none;  
+} 

@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
 
 	has_one :profile, autosave: true, dependent: :destroy
 
+	has_many :folders
+
 
 
 end

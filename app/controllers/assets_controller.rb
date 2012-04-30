@@ -11,17 +11,26 @@ class AssetsController < ApplicationController
   end
 
   def new
-    @asset = current_user.assets.new
+    @asset = current_user.assets.build
+    if params[:folder_id] #if we want to upload a file inside another folder  
+      @current_folder = current_user.folders.find(params[:folder_id])  
+      @asset.folder_id = @current_folder.id  
+    end 
   end
 
-  def create
-    @asset = current_user.assets.new(params[:asset])
-    if @asset.save
-      redirect_to @asset, :notice => "Successfully created file."
-    else
-      render :action => 'new'
-    end
-  end
+  def create  
+    @asset = current_user.assets.build(params[:asset])  
+    if @asset.save  
+      flash[:notice] = "Successfully uploaded the file."  
+      if @asset.folder #checking if we have a parent folder for this file  
+        redirect_to browse_path(@asset.folder)  #then we redirect to the parent folder  
+      else  
+        redirect_to root_url  
+      end        
+    else  
+      render :action => 'new'  
+    end  
+  end  
 
   def edit
     @asset = current_user.assets.find(params[:id])
@@ -36,11 +45,19 @@ class AssetsController < ApplicationController
     end
   end
 
-  def destroy
-    @asset = current_user.assets.find(params[:id])
-    @asset.destroy
-    redirect_to assets_url, :notice => "Successfully deleted file."
-  end
+  def destroy  
+    @asset = current_user.assets.find(params[:id])  
+    @parent_folder = @asset.folder #grabbing the parent folder before deleting the record  
+    @asset.destroy  
+    flash[:notice] = "Successfully deleted the file."  
+    #redirect to a relevant path depending on the parent folder  
+    if @parent_folder  
+      redirect_to browse_path(@parent_folder)  
+    else  
+      redirect_to root_url  
+    end  
+  end 
+  
 
   #this action will let the users download the files (after a simple authorization check)  
   def get  

@@ -1,0 +1,11 @@
+<div class="breadcrumbs">          
+    <% if @current_folder #checking if we are under any folder %>  
+        <h2><%= link_to "my uploads", root_url %>  
+        <% @current_folder.ancestors.reverse.each do |folder| %>  
+            » <%= link_to folder.name.downcase, browse_path(folder) %>  
+        <% end %>  
+         »  <%= @current_folder.name.downcase %></h2>  
+    <% else #if we are not under any folder%>  
+        <h2>my uploads</h2>  
+    <% end %>  
+</div> 

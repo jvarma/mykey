@@ -1,34 +1,81 @@
 
-  	<% if user_signed_in? %>
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#1" data-toggle="tab">home</a></li>
-          <li><a href="#3" data-toggle="tab">upload</a></li>
-          <li><a href="#4" data-toggle="tab">files</a></li>
-          <li><a href="#5" data-toggle="tab">folders</a></li>
-          <li><a href="#6" data-toggle="tab">sharing</a></li>
-          <li><a href="#7" data-toggle="tab">key</a></li>
-          <li><a href="#2" data-toggle="tab">surprise me!</a></li>
-        </ul>
-        <div class="tab-content">
-          <%= render 'home_tab_home'%>
-          <%= render 'home_tab_surprise'%>
-          <%= render 'home_tab_files' %>
+<% if user_signed_in? %>
+  <%= render :partial => "breadcrumbs" %> 
+  <div class="container">
+  <% @folders.each do |folder| %>  
+    <div class="row">
+      <div class="span2">
+        <%= image_tag("asset_tn/folder.png")%>
+      </div>
+      <div class="span10">
+        <div class="row">  
+          <h2 class="pull-left">
+            <%= link_to folder.name.downcase, browse_path(folder) %>
+          </h2>
+        </div>
+        <div class="row">
+          <%= link_to "share", '#'%> | <%= link_to "rename", '#'%> | <%= link_to "delete", folder, confirm: "This will delete the folder and ALL its contents! Are you sure?", method: :delete%>
         </div>
       </div>
-
-  	<% else %>
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#1" data-toggle="tab">home</a></li>
-          <li><a href="#2" data-toggle="tab">surprise me!</a></li>
-        </ul>
-        <div class="tab-content">
-          <%= render 'home_tab_home'%>
-          <%= render 'home_tab_surprise'%>
+    </div>
+    <hr />  
+  <% end %> 
+  </div>
+  <div class="container">
+    <% @assets.each do |asset| %>
+      <div class="row">
+        <div class="span2">
+          <%= image_tag("asset_tn/#{asset_type(asset.file_name)}.jpg") %>
         </div>
-      </div>       
-  	<% end %>
+        <div class="span10">
+          <div class="row">
+            <h2 class="pull-left">
+            <%= link_to pretty_file_name(asset.file_name), '#' %>
+            </h2>
+          </div>
+          <div class="row">
+            <%= number_to_human_size(asset.file_size, precision: 2) %>
+          </div>
+          <div class="row">
+            <%= link_to "download", download_url(asset) %> | <%= link_to "delete", asset_path(asset), method: :delete%>
+          </div>  
+        </div>
+      </div>
+      <hr />
+    <% end %>
+  </div>
+
+  <div class="container center">
+    <% if @current_folder %>
+      <%= link_to "upload", new_sub_file_path(@current_folder), class: "btn btn-small btn-primary"%>
+      <%= link_to "new folder", new_sub_folder_path(@current_folder), class: "btn btn-small btn-primary" %>
+    <% else %>
+      <%= link_to "upload", new_asset_path, class: "btn btn-small btn-primary"%>
+      <%= link_to "new folder", new_folder_path, class: "btn btn-small btn-primary" %>
+    <% end %>
+  </div>
+
+      
+<% else %>
+  <div class="tab-pane active" id="_home_tab">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span3">
+          <%= image_tag("static_image_1.jpg")%>
+        </div>
+        <div class="span3">
+          <%= image_tag("static_image_2.jpg")%>
+        </div>
+        <div class="span3">
+          <%= image_tag("static_image_3.jpg")%>
+        </div>
+        <div class="span3">
+          <%= image_tag("static_image_4.jpg")%>
+        </div>
+      </div>
+    </div>
+  </div>     
+<% end %>
 
   <div class="center hero-unit">      
     <h2>all your data | made simple | in your control</h2>  
