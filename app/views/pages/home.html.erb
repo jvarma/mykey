@@ -34,7 +34,7 @@
             </h2>
           </div>
           <div class="row">
-            <%= number_to_human_size(asset.file_size, precision: 2) %>
+            <%= number_to_human_size(asset.file_size, precision: 2) %> | <%= asset.created_at.in_time_zone("New Delhi")%>
           </div>
           <div class="row">
             <%= link_to "download", download_url(asset) %> | <%= link_to "delete", asset_path(asset), method: :delete%>
