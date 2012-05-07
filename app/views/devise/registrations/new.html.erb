@@ -1,35 +1,43 @@
-<h2>Sign up</h2>
-
+<div class="container">
+<div class="well span4 offset4">
+<h2>sign up</h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 	<%= devise_error_messages! %>
 
 	<div>
-		<%= f.label :name, "your full name" %><br />
+		<%= f.label :name, "your full name" %>
   		<%= f.text_field :name, placeholder: "maximum 30 characters" %>
   	</div>
 
   	<div>
-  		<%= f.label :email, "email id" %><br />
+  		<%= f.label :email, "email id" %>
   		<%= f.email_field :email, placeholder: "@" %>
   	</div>
 
 
   	<div>
-  		<%= f.label :password, "enter a password" %><br />
+  		<%= f.label :password, "enter a password" %>
   		<%= f.password_field :password, placeholder: "6 to 15 characters" %>
   	</div>
 
   	<div>
-  		<%= f.label :password_confirmation, "re-enter password" %><br />
+  		<%= f.label :password_confirmation, "re-enter password" %>
   		<%= f.password_field :password_confirmation, placeholder: "same as above" %>
   	</div>
 
 
 
   	<div>
-  		<%= f.submit "sign up" %>
+  		<%= f.submit "sign up", class: "btn btn-small btn-primary" %>
+      <%= link_to "cancel", root_path %>
   	</div>
 
 <% end %>
 
 <%= render "links" %>
+
+
+
+
+
+</div></div>
