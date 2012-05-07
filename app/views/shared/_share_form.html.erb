@@ -1,0 +1,19 @@
+ <%= form_tag '/pages/share' do %>  
+	<div class="row">
+		<label for="email_addresses">Enter friends' email addresses here, separated by comma</label>
+	</div>  
+    
+    <div class="row">
+    	<%= text_field_tag 'email_addresses'%>
+    </div>  
+    
+    <div class="row">
+    	<label for="message">Optional message</label>  
+    </div>
+
+    <div class="row">
+    	<%= text_area_tag 'message'%>
+    </div>
+    <%= hidden_field_tag :folder_id, @current_folder.id %>  
+    <%= submit_tag("share", class: "btn btn-small btn-primary") %>
+<% end %> 

@@ -21,6 +21,9 @@ Mykey::Application.routes.draw do
 
   root :to => 'pages#home'
 
+  #for sharing the folder  
+  match "pages/share" => "pages#share"
+
 
 
   match "assets/get/:id" => "assets#get", as: :download

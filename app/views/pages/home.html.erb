@@ -1,20 +1,45 @@
 
 <% if user_signed_in? %>
-  <%= render :partial => "breadcrumbs" %> 
+  <%= render :partial => "breadcrumbs" %>
+  
+  <% if @current_folder %>
+    <div class="container center">
+      <div id="share"%>
+        <%= link_to "share folder", "javascript:void(0)", onclick: "ShareFolder()", class: "btn btn-small btn-primary" %>
+      </div>
+
+      <div class="well", id="share_form", style="display:none;">
+        <%= render 'shared/share_form' %>
+        <%= link_to "cancel", "javascript:void(0)", onclick: "CancelShare()" %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if @folders.empty? %>
+  <div class="alert alert-notice">
+    <% if @current_folder %>
+      <p>You have not created any sub-folders here! Create a new folder here or upload files.</p>
+    <% else %>
+      <p>You have not created any folders yet! Create some folders or upload files.</p>
+
+    <% end %>
+  </div>
+  <% end %> 
   <div class="container">
   <% @folders.each do |folder| %>  
     <div class="row">
       <div class="span2">
+      <% if folder.shared? %>
+        <%= image_tag("asset_tn/shared_folder.png")%>
+      <% else %>
         <%= image_tag("asset_tn/folder.png")%>
+      <% end %>
       </div>
       <div class="span10">
         <div class="row">  
           <h2 class="pull-left">
             <%= link_to folder.name.downcase, browse_path(folder) %>
           </h2>
-        </div>
-        <div class="row">
-          <%= link_to "share", '#'%> | <%= link_to "rename", '#'%> | <%= link_to "delete", folder, confirm: "This will delete the folder and ALL its contents! Are you sure?", method: :delete%>
         </div>
       </div>
     </div>
@@ -47,13 +72,24 @@
 
   <div class="container center">
     <% if @current_folder %>
-      <%= link_to "upload", new_sub_file_path(@current_folder), class: "btn btn-small btn-primary"%>
+      <%= link_to "upload a file", new_sub_file_path(@current_folder), class: "btn btn-small btn-primary"%>
       <%= link_to "new folder", new_sub_folder_path(@current_folder), class: "btn btn-small btn-primary" %>
     <% else %>
-      <%= link_to "upload", new_asset_path, class: "btn btn-small btn-primary"%>
+      <%= link_to "upload a file", new_asset_path, class: "btn btn-small btn-primary"%>
       <%= link_to "new folder", new_folder_path, class: "btn btn-small btn-primary" %>
     <% end %>
   </div>
+
+<div id="invitation_form" title="Invite others to share" style="display:none">  
+    <% form_tag '/home/share' do -%>  
+            <label for="email_addresses">Enter recipient email addresses here</label><br />  
+            <%= text_field_tag 'email_addresses', "", :class => 'text ui-widget-content ui-corner-all'%>  
+            <br /><br />  
+            <label for="message">Optional message</label><br />  
+            <%= text_area_tag 'message',"",  :class => 'text ui-widget-content ui-corner-all'%>  
+            <%= hidden_field_tag "folder_id" %>  
+    <% end -%>                  
+</div>
 
       
 <% else %>
@@ -77,9 +113,29 @@
   </div>     
 <% end %>
 
-  <div class="center hero-unit">      
-    <h2>all your data | made simple | in your control</h2>  
-  </div>
+<div class="center hero-unit">      
+  <h2>all your data | made simple | in your control</h2>  
+</div>
+
+<script type="text/javascript">
+
+function ShareFolder()
+{
+  var element_to_hide = "#share";
+  var element_to_show = "#share_form";
+  $(element_to_hide).hide();
+  $(element_to_show).slideDown();
+}
+
+function CancelShare()
+{
+  var element_to_show = "#share";
+  var element_to_hide = "#share_form";
+  $(element_to_hide).hide();
+  $(element_to_show).slideDown();
+
+}
 
 
 
+</script>

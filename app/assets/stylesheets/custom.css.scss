@@ -131,44 +131,6 @@ footer {
 
 }
 
-/* file and assets */
-.asset_list_header, .asset_list, .asset_details {  
-    width:800px;  
-    font-weight:bold;  
-    font-size:12px;  
-    overflow:hidden;  
-  
-}  
-.file_name_header, .file_name {  
-    width:350px;  
-    float:left;  
-    padding-left:20px;  
-}  
-.file_size_header, .file_size {  
-    width:100px;  
-    float:left;  
-}  
-.file_last_updated_header, .file_last_updated {  
-    width:150px;  
-    float:left;  
-}  
-.asset_list {  
-    padding:20px 0;  
-}  
-.asset_details {  
-    font-weight:normal;  
-    height:25px;  
-    line-height:25px;  
-    border:1px solid #FFF;  
-    width:790px;  
-    color:#4F4F4F;  
-}  
-  
-.asset_details a, .asset_details a:visited {  
-    text-decoration:none;  
-    color:#1D96EF;  
-    font-size:12px;  
-}
 
 /* overriding .hero-unit */
 .hero-unit {
@@ -192,28 +154,6 @@ footer {
     margin-left: 290px;
 }
 
-.folder  {  
-    background:url("/asset_tn/folder.png") no-repeat scroll left center transparent;  
-}  
-  
-.file {  
-    background:url("/asset_tn/file.png") no-repeat scroll left center transparent;  
-}  
-.folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover  {  
-    border:1px solid #DFDFDF;  
-}  
-.folder.asset_details:hover  {  
-    background:url("/asset_tn/folder.png") no-repeat scroll left center #EFEFEF;  
-}  
-.shared_folder  {  
-    background:url("/asset_tn/shared_folder.png") no-repeat scroll left center transparent;  
-}  
-.shared_folder.asset_details:hover  {  
-    background:url("/asset_tn/shared_folder.png") no-repeat scroll left center #EFEFEF;  
-}  
-.file.asset_details:hover  {  
-    background:url("/asset_tn/file.png") no-repeat scroll left center #EFEFEF;  
-}
 
 .breadcrumbs {  
    margin:10px 0;  
@@ -223,3 +163,4 @@ footer {
    color:#1D96EF;  
    text-decoration:none;  
 } 
+
