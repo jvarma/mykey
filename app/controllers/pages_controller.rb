@@ -1,9 +1,14 @@
 class PagesController < ApplicationController
   def home
   	@users = User.all
-  	if user_signed_in?  
+  	if user_signed_in?
+      #show folders shared by others  
+      @being_shared_folders = current_user.shared_folders_by_others    
+      
       @assets = current_user.assets.where("folder_id is NULL").order("uploaded_file_file_name desc")
+      
       @folders = current_user.folders.roots
+      
       @current_folder = current_user.folders.find_by_id(params[:folder_id])       
     end 
   end
@@ -24,25 +29,36 @@ class PagesController < ApplicationController
   	@title = "help"
   end
 
-  def browse
-    @users = User.all  
-    #get the folders owned/created by the current_user  
-    @current_folder = current_user.folders.find(params[:folder_id])    
-  
-    if @current_folder  
+  def browse  
+  #first find the current folder within own folders  
+  @current_folder = current_user.folders.find_by_id(params[:folder_id])    
+  @is_this_folder_being_shared = false if @current_folder #just an instance variable to help hiding buttons on View  
     
-      #getting the folders which are inside this @current_folder  
-      @folders = @current_folder.children  
-  
-      #We need to fix this to show files under a specific folder if we are viewing that folder  
-      @assets = @current_folder.assets.order("uploaded_file_file_name desc")  
-  
-      render :home  
-    else  
-      flash[:error] = "Don't be cheeky! Mind your own folders!"  
-      redirect_to root_url  
-    end  
-  end
+  #if not found in own folders, find it in being_shared_folders  
+  if @current_folder.nil?  
+    folder = Folder.find_by_id(params[:folder_id])  
+      
+    @current_folder ||= folder if current_user.has_share_access?(folder)  
+    @is_this_folder_being_shared = true if @current_folder #just an instance variable to help hiding buttons on View  
+      
+  end  
+    
+  if @current_folder  
+    #if under a sub folder, we shouldn't see shared folders  
+    @being_shared_folders = []  
+      
+    #show folders under this current folder  
+    @folders = @current_folder.children  
+      
+    #show only files under this current folder  
+    @assets = @current_folder.assets.order("uploaded_file_file_name desc")  
+      
+    render :action => "home"  
+  else  
+    flash[:error] = "Don't be cheeky! Mind your own assets!"  
+    redirect_to root_url  
+  end  
+end  
   
   
   #this handles ajax request for inviting others to share folders  
@@ -67,6 +83,7 @@ class PagesController < ApplicationController
       @shared_folder.save  
     
       #now we need to send email to the Shared User  
+      UserMailer.invitation_to_share(@shared_folder).deliver
     end  
   
     #since this action is mainly for ajax (javascript request), we'll respond with js file back (refer to share.js.erb)  

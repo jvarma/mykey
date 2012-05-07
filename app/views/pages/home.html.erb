@@ -24,7 +24,32 @@
 
     <% end %>
   </div>
-  <% end %> 
+  <% end %>
+  
+  
+
+<div class="container">
+<% @being_shared_folders.each do |folder| %>  
+    <div class="row">
+      <div class="span2">
+        <%= image_tag("asset_tn/shared_folder.png")%>
+      </div>
+      <div class="span10">
+        <div class="row">  
+          <h2 class="pull-left">
+            <%= link_to folder.name.downcase, browse_path(folder) %>
+          </h2>
+        </div>
+        <div class="row">  
+          <p>shared by <%= link_to folder.user.name.downcase, '#' %></p>
+        </div>
+      </div>
+    </div>
+    <hr />  
+<% end %>
+</div>
+
+   
   <div class="container">
   <% @folders.each do |folder| %>  
     <div class="row">
@@ -70,6 +95,7 @@
     <% end %>
   </div>
 
+  <% unless @is_this_folder_being_shared %>
   <div class="container center">
     <% if @current_folder %>
       <%= link_to "upload a file", new_sub_file_path(@current_folder), class: "btn btn-small btn-primary"%>
@@ -79,17 +105,10 @@
       <%= link_to "new folder", new_folder_path, class: "btn btn-small btn-primary" %>
     <% end %>
   </div>
+<% else %>  
+    <h3>This folder is being shared to you by <%= @current_folder.user.name %></h3>  
+<% end %> 
 
-<div id="invitation_form" title="Invite others to share" style="display:none">  
-    <% form_tag '/home/share' do -%>  
-            <label for="email_addresses">Enter recipient email addresses here</label><br />  
-            <%= text_field_tag 'email_addresses', "", :class => 'text ui-widget-content ui-corner-all'%>  
-            <br /><br />  
-            <label for="message">Optional message</label><br />  
-            <%= text_area_tag 'message',"",  :class => 'text ui-widget-content ui-corner-all'%>  
-            <%= hidden_field_tag "folder_id" %>  
-    <% end -%>                  
-</div>
 
       
 <% else %>
