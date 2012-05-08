@@ -62,31 +62,51 @@ end
   
   
   #this handles ajax request for inviting others to share folders  
-  def share      
+  def share
+        
+    #a local variable to keep count of emails sent
+    mails_sent = 0
+
+    #get the current folder - the folder being shared
+    @current_folder = current_user.folders.find_by_id(params[:folder_id])
     
-    #first, we need to separate the emails with the comma  
+    #separate the emails with the comma  
     email_addresses = params[:email_addresses].split(",")  
       
-    email_addresses.each do |email_address|  
-      #save the details in the ShareFolder table  
-      @shared_folder = current_user.shared_folders.new  
-      @shared_folder.folder_id = params[:folder_id]  
-      @shared_folder.shared_email = email_address
-      @current_folder = current_user.folders.find_by_id(params[:folder_id])
+    email_addresses.each do |email_address|
+      email_address = email_address.strip  
+      if email_address =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+        #find if a SharedFolder record already exists for the current_folder and the email
+        @shared_folder = SharedFolder.find_by_folder_id_and_shared_email(params[:folder_id], email_address)
+        if @shared_folder.nil?
+          #create a new record and save the details in the ShareFolder table  
+          @shared_folder = current_user.shared_folders.new  
+          @shared_folder.folder_id = params[:folder_id]
+          @shared_folder.shared_email = email_address
+        end
+      
+        #Find if a user with the email address exists
+        shared_user = User.find_by_email(email_address)
+      
+        #if it already exists, update the shared_user_id  
+        @shared_folder.shared_user_id = shared_user.id if shared_user  
     
-      #getting the shared user id right the owner the email has already signed up with ShareBox  
-      #if not, the field "shared_user_id" will be left nil for now.  
-      shared_user = User.find_by_email(email_address)  
-      @shared_folder.shared_user_id = shared_user.id if shared_user  
+        #update the message
+        @shared_folder.message = params[:message]  
+        
+        @shared_folder.save  
     
-      @shared_folder.message = params[:message]  
-      @shared_folder.save  
+        #now we need to send email to the Shared User  
+        UserMailer.invitation_to_share(@shared_folder).deliver
+        mails_sent += 1
+      end
+    end
     
-      #now we need to send email to the Shared User  
-      UserMailer.invitation_to_share(@shared_folder).deliver
-    end  
-  
-    #since this action is mainly for ajax (javascript request), we'll respond with js file back (refer to share.js.erb)  
+    if (mails_sent >= 1)
+      flash[:success] = "#{@current_folder.name.downcase} has been shared with #{mails_sent} user(s)"
+    end
+    #redirect the user back to the browse path for current folder - the folder that was shared
     redirect_to browse_path @current_folder
     
   end  

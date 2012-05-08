@@ -3,6 +3,7 @@
   <%= render :partial => "breadcrumbs" %>
   
   <% if @current_folder %>
+    <% if (@current_folder.assets.size > 0 || @current_folder.children.size > 0) %>
     <div class="container center">
       <div id="share"%>
         <%= link_to "share folder", "javascript:void(0)", onclick: "ShareFolder()", class: "btn btn-small btn-primary" %>
@@ -13,18 +14,18 @@
         <%= link_to "cancel", "javascript:void(0)", onclick: "CancelShare()" %>
       </div>
     </div>
+    <% end %>
+      <div class="container center">
+        <div class="well">
+        <p>Your folder "<%= @current_folder.name %>" is empty. Upload some files or create a sub-folder!</p>
+        </div>
+
+      </div>
+    
+
   <% end %>
   
-  <% if @folders.empty? %>
-  <div class="alert">
-    <% if @current_folder %>
-      <p>You have not created any sub-folders here! Create a new folder here or upload files.</p>
-    <% else %>
-      <p>You have not created any folders yet! Create some folders or upload files.</p>
 
-    <% end %>
-  </div>
-  <% end %>
   
   
 
@@ -32,7 +33,7 @@
 <% @being_shared_folders.each do |folder| %>  
     <div class="row">
       <div class="span2">
-        <%= image_tag("asset_tn/shared_folder.png")%>
+        <%= image_tag("asset_tn/shared_folder_others.png")%>
       </div>
       <div class="span10">
         <div class="row">  
