@@ -42,7 +42,7 @@
           </h2>
         </div>
         <div class="row">  
-          <p>shared by <%= link_to folder.user.name.downcase, '#' %></p>
+          <p>shared by <%= link_to folder.user.name.downcase, profile_path(folder.user.profile) %></p>
         </div>
       </div>
     </div>
