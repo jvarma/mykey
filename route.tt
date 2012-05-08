@@ -1,0 +1,46 @@
+                  browse        /browse/:folder_id(.:format)            pages#browse
+          new_sub_folder        /browse/:folder_id/new_folder(.:format) folders#new
+            new_sub_file        /browse/:folder_id/new_file(.:format)   assets#new
+                 folders GET    /folders(.:format)                      folders#index
+                         POST   /folders(.:format)                      folders#create
+              new_folder GET    /folders/new(.:format)                  folders#new
+             edit_folder GET    /folders/:id/edit(.:format)             folders#edit
+                  folder GET    /folders/:id(.:format)                  folders#show
+                         PUT    /folders/:id(.:format)                  folders#update
+                         DELETE /folders/:id(.:format)                  folders#destroy
+        new_user_session GET    /users/sign_in(.:format)                devise/sessions#new
+            user_session POST   /users/sign_in(.:format)                devise/sessions#create
+    destroy_user_session DELETE /users/sign_out(.:format)               devise/sessions#destroy
+           user_password POST   /users/password(.:format)               devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)           devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format)          devise/passwords#edit
+                         PUT    /users/password(.:format)               devise/passwords#update
+cancel_user_registration GET    /users/cancel(.:format)                 devise/registrations#cancel
+       user_registration POST   /users(.:format)                        devise/registrations#create
+   new_user_registration GET    /users/sign_up(.:format)                devise/registrations#new
+  edit_user_registration GET    /users/edit(.:format)                   devise/registrations#edit
+                         PUT    /users(.:format)                        devise/registrations#update
+                         DELETE /users(.:format)                        devise/registrations#destroy
+       user_confirmation POST   /users/confirmation(.:format)           devise/confirmations#create
+   new_user_confirmation GET    /users/confirmation/new(.:format)       devise/confirmations#new
+                         GET    /users/confirmation(.:format)           devise/confirmations#show
+                   users GET    /users(.:format)                        users#index
+                         POST   /users(.:format)                        users#create
+                new_user GET    /users/new(.:format)                    users#new
+               edit_user GET    /users/:id/edit(.:format)               users#edit
+                    user GET    /users/:id(.:format)                    users#show
+                         PUT    /users/:id(.:format)                    users#update
+                         DELETE /users/:id(.:format)                    users#destroy
+                profiles GET    /profiles(.:format)                     profiles#index
+                         POST   /profiles(.:format)                     profiles#create
+             new_profile GET    /profiles/new(.:format)                 profiles#new
+            edit_profile GET    /profiles/:id/edit(.:format)            profiles#edit
+                 profile GET    /profiles/:id(.:format)                 profiles#show
+                         PUT    /profiles/:id(.:format)                 profiles#update
+                         DELETE /profiles/:id(.:format)                 profiles#destroy
+                    root        /                                       pages#home
+             pages_share        /pages/share(.:format)                  pages#share
+                     tou        /tou(.:format)                          pages#tou
+                   about        /about(.:format)                        pages#about
+                    help        /help(.:format)                         pages#help
+                 contact        /contact(.:format)                      pages#contact
