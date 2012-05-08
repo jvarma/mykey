@@ -16,26 +16,30 @@
 			</div>
 		</div>
 	</div>
-	<div class="row-fluid">
-				<p>
-					...shared <%=pluralize(@folders.size, "folder")%> with you!
-				</p>
-		
-	</div>
-	<% @folders.each do |folder| %>
-	<div class="row-fluid">
-		<div class="span2 offset2">
-			<%= image_tag("asset_tn/shared_folder_others.png")%>
+	<% unless current_user == @user %>
+		<div class="row-fluid">
+					<p>
+						...shared <%=pluralize(@folders.size, "folder")%> with you!
+					</p>
+			
 		</div>
-		<div class="span8">
-			<div class="row">
-				<h2 class="pull-left"><%=link_to folder.name.downcase, '#' %></h2>
+		<% @folders.each do |folder| %>
+		<div class="row-fluid">
+			<div class="span2 offset2">
+				<%= image_tag("asset_tn/shared_folder_others.png")%>
 			</div>
-			<div class="row">
-				<small><%= pluralize(folder.assets.size, "file") %> | <%= pluralize(folder.children.size, "folder")%> inside</small>
-			</div>			
+			<div class="span8">
+				<div class="row">
+					<h2 class="pull-left"><%=link_to folder.name.downcase, '#' %></h2>
+				</div>
+				<div class="row">
+					<small>
+						<%= pluralize(folder.assets.size, "file") %> | <%= pluralize(folder.children.size, "folder")%> inside
+					</small>
+				</div>			
+			</div>
 		</div>
-	</div>
+		<% end %>
 	<% end %>
 
 </div>
